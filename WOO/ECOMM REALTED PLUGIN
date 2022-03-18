@@ -1,1 +1,19 @@
 
+all
+ 
+Git repository for Woo/Ecommerce-related plugins:
+git@54.255.101.170:web2files/ecommplugins
+
+Contains:
+Payment (Authorize.Net, Stripe, Square) 
+Shipping (FedEx, UPS, USPS)
+Other (SMTP, Shipping Label)
+
+In case there are changes/updates:
+- If you have other working/tested plugins not yet found in the repository, then you can add them.
+- Or if you have updated versions of the already existing plugins, then you can replace the old ones.
+- Just remember to put the plugins in their corresponding directories (payment, shipping, or other)
+
+PR Tool Link: 
+https://office.proweaver.tools/prtool/viewpost/index/S2231514533Sm815ea 
+Under “Woo/Ecomm-related Plugins” topic
