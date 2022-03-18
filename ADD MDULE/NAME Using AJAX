@@ -1,0 +1,14 @@
+$(document).on('click','#btn',function(){
+        $.ajax({
+            url: `${base_url}modules/manage_modules/AddNewModule`,
+            type:'POST',
+            data:{module_name: $("#add-class-name").val(),
+                  sequence: $("#add-sequence-no").val()},
+            success:function(){
+                $('#modules-list').DataTable().ajax.reload();
+            },
+            error: function(){
+              alert("Error");
+            }
+        });
+    })
