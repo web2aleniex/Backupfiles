@@ -1,0 +1,1 @@
+<input type="date" name="Pick_Up_Date" class="form-control form-control-lg required" id="Pick_Up_Date" min="<?php echo date('Y-m-d', strtotime("+24 hours", strtotime(date('Y-m-d H:i:s')))); ?>" data-date-start-date="+1d" placeholder="Enter Date Here">
