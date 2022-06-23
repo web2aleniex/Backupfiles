@@ -1,0 +1,304 @@
+<?php
+@session_start();
+require_once 'wp-content/themes/leloftdeparisne898/forms/FormsClass.php';
+$input = new FormsClass();
+
+$formname = 'Subscribe and get 10% off on your first order! Form';
+$prompt_message = '<span style="color:#ff0000;"></span>';
+require_once 'wp-content/themes/leloftdeparisne898/forms/config.php';
+if(isset($_POST['submit_info'])){
+	$robot = $_POST['_Robot'];
+	if(empty($_POST['_Email'])
+	) {
+
+	$asterisk = '<span style="color:#FF0000; font-weight:bold;">*&nbsp;</span>';
+	$prompt_message = '<div class="fail-msg"><div id="fail"><p class="fail-check">' . $asterisk . ' Required Fields are empty.</p></div></div>';
+	}
+	else if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i",stripslashes(trim($_POST['_Email']))))
+		$prompt_message = '<div class="fail-msg"><div id="fail"><p class="fail-check"> Please enter a valid email address.</p></div></div>';
+		elseif (!empty($robot)) {
+ 	$prompt_message = '<div class="fail-msg"><div id="fail"><p class="fail-check">I\'m sorry we have detected a <b>bot</b>, please fill out the fields manually.</p></div></div>';
+ }else{
+
+		$body = '<div class="form_table" style="width:700px; height:auto; font-size:12px; color:#333333; letter-spacing:1px; line-height:20px; margin: 0 auto;">
+			<div style="border:8px double #c3c3d0; padding:12px;">
+			<div align="center" style="font-size:22px; font-family:Times New Roman, Times, serif; color:#051d38;">'.COMP_NAME.'</div>
+			<div align="center" style="color:#990000; font-style:italic; font-size:20px; font-family:Arial; margin:bottom: 15px;">('.$formname.')</div>
+
+			<table width="90%" cellspacing="2" cellpadding="5" align="center" style="font-family:Verdana; font-size:13px">
+				';
+
+			foreach($_POST as $key => $value){
+				if($key == 'secode') continue;
+				elseif($key == 'submit_info') continue;
+
+				if(!empty($value)){
+					$key2 = str_replace('_', ' ', $key);
+					if($value == ':') {
+						$body .= '<tr><td colspan="2" style="background:#F0F0F0; line-height:30px"><b>'.$key2.'</b></td></tr>';
+					}else {
+						$body .= '<tr><td><b>'.$key2.'</b>:</td> <td>'.htmlspecialchars(trim($value), ENT_QUOTES).'</td></tr>';
+					}
+				}
+			}
+			$body .= '
+			</table>
+
+			</div>
+			</div>';
+
+		// for email notification
+		include 'wp-content/themes/leloftdeparisne898/forms/send_email_curl.php';
+
+		// save data form on database
+		include 'wp-content/themes/leloftdeparisne898/forms/savedb2.php';
+
+		// save data form on database
+		$subject = $formname ;
+		$attachments = array();
+
+	 	//name of sender
+		$name = "Message From Your Site";
+		$result = insertDB($name,$subject,$body,$attachments);
+
+		$parameter = array(
+			'body' => $body,
+			'from' => $from_email,
+			'from_name' => $from_name,
+			'to' => $to_email,
+			'subject' => 'New Message Notification',
+			'attachment' => $attachments
+		);
+
+		$success_message =  '<div class="success-msg"><div id="success"><p class="success-check">Your message has been submitted.  We will get in touch with you as soon as possible.<br/>Thank you for your time.</p></div></div>';
+
+		$failed_message = '<div class="fail-msg"><div id="fail"><p class="fail-check">Failed to send email. Please try again.</p></div></div>';
+
+
+		$prompt_message = send_email($parameter, $success_message, $failed_message);
+
+	}
+
+}
+/*************declaration starts here************/
+
+?>
+
+<!-- Modal -->
+
+<?php if(is_front_page()) { ?>
+<div id="Modal">
+	<div id="Mod_container">
+		<?php echo $prompt_message; ?>
+		<div id="modboxcolor">
+			<div class="mod_close"><p>x</p></div>
+			<div class="Mod_cont">
+				<div class="Mod_cont_left">
+					<figure><img src="<?php bloginfo('template_url');?>/images/pop-up-img.jpg" alt="Model brandishing black dress"></figure>
+				</div>
+				<div class="Mod_cont_right">
+					<h3>Subscribe to Unlock your 10% OFF on your first order!</h3>
+					<form method="post" id="submit_formmessage">
+						<input type="text" class="form_email" name="_Email" placeholder="Email Address (Required)">
+						<input type="text" class="form_email" name="_Robot" style="display:none;">
+						<input type="text" name="Birthdate" placeholder="Birthday MM/DD (Optional)">
+					<label class="form_radio">
+						<label for="Women">Women</label>
+						  <input type="radio" name="Women,_Men_or_Both" value="Women" checked="checked">
+						  <span class="checkmark"></span>
+						</label>
+						<label class="form_radio">
+							<label for="Men">Men</label>
+							<input type="radio" name="Women,_Men_or_Both" value="Men">
+							<span class="checkmark"></span>
+						</label>
+						<label class="form_radio">
+							<label for="Both">Both</label>
+							<input type="radio" name="Women,_Men_or_Both" value="Both">
+							<span class="checkmark"></span>
+						</label>
+
+						<input type="submit" name="submit_info" class="form_btn" value="SIGN UP">
+					</form>
+					<div class="mod_close" id="myBtn"><p>NO THANKS</p></div>
+					*For new clients only with a minimum order value of $60. Limit one promotional code per order.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+/* The container */
+.form_radio {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.form_radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.form_radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.form_radio input:checked ~ .checkmark {
+  background-color: #ccc3c4;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.form_radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.form_radio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+</style>
+<?php } ?>
+
+<!-- Header -->
+<header>
+	<div class="wrapper">
+		<div class="header_con">
+			<div class="main_logo">
+			  <a href="<?php echo get_home_url(); ?>"><figure><img src="<?php bloginfo('template_url');?>/images/main-logo.png" alt="<?php echo get_bloginfo('name');?>"/></figure></a>
+			</div>
+
+			<div class="head_info">
+				
+
+<div class="flex-container loc-widget">
+<div>
+<h4 class="title1">My Location</h4>
+<select id="mylocation" name="choice">
+<option disabled="disabled" selected="selected" value="">Select Location &nbsp;&nbsp;&nbsp;&gt;</option>
+<option value="unitedstates">United States&nbsp;(USD)</option>
+<option value="europe">Europe&nbsp;(EUR)</option>
+</select>
+
+</div>
+</div>
+
+				<!--<div class="header_details">
+          			<?php dynamic_sidebar('header_info');?>
+				</div>-->
+
+				<!--<div class="social_media">
+					<h3>Like, Comment, and Share: </h3>
+					<ul>
+						<li><a href="https://www.facebook.com" target="_blank"><figure><img src="<?php bloginfo('template_url');?>/images/icons/fb-icon.png" alt="facebook"/></figure></a></li>
+						<li><a href="https://www.twitter.com" target="_blank"><figure><img src="<?php bloginfo('template_url');?>/images/icons/twitter-icon.png" alt="twitter"/></figure></a></li>
+					</ul>
+				</div>-->
+
+				<div class="header_info">
+					<ul>
+						<li><figure><img src="<?php bloginfo('template_url');?>/images/icons/account-icon.png" alt="account icon"></figure><a href="<?php echo wc_get_page_permalink('myaccount')?>"><h2>My Account </h2></a></li>
+						<li><div><figure><img src="<?php bloginfo('template_url');?>/images/icons/cart-icon.png" alt="cart icon"></figure><small><?php echo do_shortcode('[cart_count]'); ?></small></div><a href="<?php echo wc_get_page_permalink('cart')?>"><h2>My Cart </h2></a></li>
+					</ul>
+				</div>
+
+				<div class="search_form">
+					<form method="get" id="searchform" action="#" class="search">
+						<!-- <input type="search" id="in" autocomplete="off" name="s" class="in" placeholder="Search Product " required> -->
+						<!-- <input type="submit"> -->
+					</form>
+					<?php echo do_shortcode('[aws_search_form]'); ?>
+				</div>
+
+				<!--<div class="header_hambuger">
+					<div class="header_ham" id="myBtn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+
+				</div>-->
+
+				<div class="modal" id="myModal">
+					<!-- Modal content -->
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2>Categories</h2>
+
+						<ul>
+							<li><a href="https://w2929.proweaver2.site/fashion-boutique-shop">Shop</a></li>
+							<li class="categories_woman"><a href="https://w2929.proweaver2.site/product-category/women">Women <span></span></a>
+								<ul>
+									<li><a href="https://w2929.proweaver2.site/fashion-boutique-shop ">All Products</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/top">Top</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/knitwear-skirts">Knitwear &amp; Skirts</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/dresses-skirts">Dresses & Skirts</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/pants">Pants</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/denim">Denim</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/leather">Leather</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/jacket">Jackets</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/coats">Coats</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/loungewear">Loungewear</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/athleisure">Athleisure</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/women/beachwear">Beachwear</a></li>
+								</ul>
+							</li>
+							<li><a href="https://w2929.proweaver2.site/product-category/men">Men</a></li>
+							<li class="categories_shoes"><a href="https://w2929.proweaver2.site/product-category/shoes">Shoes</a>
+								<ul>
+									<li><a href="https://w2929.proweaver2.site/product-category/shoes/sandals">Sandals</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/shoes/style">Style</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/shoes/boots">Boots</a></li>
+									<li><a href="https://w2929.proweaver2.site/product-category/shoes/sneakers">Sneakers</a></li>
+								</ul>
+							</li>
+							<li><a href="https://w2929.proweaver2.site/product-category/accessories">Accessories</a></li>
+							<li><a href="https://w2929.proweaver2.site/product-category/jewelry">Jewelry</a></li>
+							<li><a href="https://w2929.proweaver2.site/product-category/beauty">Beauty</a></li>
+							<li><a href="https://w2929.proweaver2.site/product-category/lifestyle">Lifestyle</a></li>
+							<li><a href="https://w2929.proweaver2.site/product-category/sale">Sale</a></li>
+							<li><a href="https://w2929.proweaver2.site/product-category/gift-card">Gift Card</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	  <div class="clearfix"></div>
+	</div>
+</header>
+<!-- End Header -->
