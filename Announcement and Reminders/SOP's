@@ -1,0 +1,158 @@
+PARAGRAPH INTRO
+Good morning, would like to remind lang kana bitaw mag add ta ug online form then ang page kay wala pa intro text kay kung naka 3d na
+sya coordinate lang mo sa inyung ka shared task kung sila raba mag add sa 
+intro text or kamo then kung wala sya naka 3d kay please do add lang ug intro text. 
+Naa ra sa Prtool ang mga into text.
+Please refer https://office.proweaver.tools/prtool/viewpost/index/S1871894501S584e31
+-----------------------------------------------------------------------------
+CHECKOUT TESTING
+Guys, remind lang ko. If mag-testing mo sa Checkout page sa WooCommerce site kay ayaw mo pag-login as Admin, kay automatic mabutangan man 
+gud ug dummy values ang Profile page sa Admin if mag-type mo sa form sa Checkout. Kanang naa sa screenshot (example lang na),
+kanang mga naka-highlight kay mao ra na dapat ang mga values,
+the rest sa input fields kay dapat empty na.
+-----------------------------------------------------------------------------
+ONLINE FORMS LIMIT
+Please be aware that online payment forms (donation, sponsorship, etc.) are included in the online forms count indicated in the Account Details
+(Checklist for Pages > Number of Online Forms). So, if naa mo’y task nga adding of forms kay consider checking the Account Details for the 
+limit of online forms na i-add sa site. If nalapas na sa limit kay dili na ta maka-add ug forms. However, if nag-PAY ang Client for additional 
+feature (para pag-implement ug customized online form or magpa-add ug default online payment form), kay exempted ra ni sa count limit nga naa sa Account Details.
+-----------------------------------------------------------------------------
+NEW SP ASSIGN
+
+* Once there's a new SP assigned to you, the first step you need to do is to conduct a project review and formulate a workflow. Use the following template for the
+note to send to Agent (remove the part about reference if there's none provided): 
+
+
+Below is the workflow of the proposal in reference to [insert reference here -- could be a site, document, etc.] you provided. The ETC of the project would be 
+[insert number of working days here]. We would like to ask for the Client's confirmation and if there are any revisions to the workflow,
+let us know right away. We can't proceed to the development stage unless the project's scope is finalized. Please advise. We will wait for your feedback.
+
+[initial workflow here]
+
+
+============================
+
+
+* Once there's a feedback to your previous note and there are requested changes to the workflow, use the following template (you may omit the statement about
+the ETC if it hasn't changed from the note you sent previously):
+
+
+
+Below is the revised workflow. The ETC of the project would be [insert number of working days here]. Please confirm so that we can proceed with the implementation.
+
+[revised workflow here]
+-----------------------------------------------------------------------------
+TICKET REMINDER/ INFROM MISS CHA OR MISS KIM
+If you have tasks about payment integration or backend PDQA, and if naa na'y live payment gateway ang form/checkout page and there's an issued ticket pa nga naka-"Pending Client Feedback" 
+ang status kay please let me know right away para ako ma-close ang ticket. Thank you.
+Here's another reminder. Check issued tickets when you have tasks involving payment.
+-----------------------------------------------------------------------------
+WOOCOMMERCE PAYMENT/SHIPPING INTEGRATION
+if nag-integrate mo ug live payment gateway and/or shipping method kay don't forget to put the API credentials sa Account Details under Shipping and Payment Account Credentials section.
+And for e-commerce, check SP details and update the Task Lineup status accordingly.
+-----------------------------------------------------------------------------
+EMAILS
+OAL MAIL
+mailto:prospteam101@aol.com
+prospteam
+
+Outlook
+mailto:web2spteam@outlook.com
+proweaver@2020!
+
+Hotmail
+mailto:web2sp@hotmail.com
+proweaver@2020!
+
+ZOHO Mail
+mailto:prospteam@zohomail.com
+proweaver@2020!
+
+ProtonMail
+mailto:prospteam101@protonmail.com
+proweaver@2020!
+
+Yahoo
+mailto:prospteam@yahoo.com
+Proweaver2021!
+
+Gmail
+mailto:prospteam@gmail.com
+SP101W3bTw0@gmail - dle ko sure kung mao ba gihapon ni
+And for e-commerce, check SP details and update the Task Lineup status accordingly.
+-----------------------------------------------------------------------------
+USE webtestreceive@gmail.com WHEN FILLING OUT FORMS
+
+Use a valid (and existing) e-mail address during testing to prevent e-mails from bouncing back. 
+SOP ni nato, please ug follow. By default, we use “mailto:webtestreceive@gmail.com” or our team’s other test e-mail address when filling out forms.
+-----------------------------------------------------------------------------
+ALL ABOUT ISSUING TICKET...
+
+Prior to informing me nga naa mo'y gi-submit na ticket, make sure first na:
+
+For Woo integration
+1. WooCommerce integration is done (wala na mo'y mga tiwasonon pa sa site)
+2. Naplastar na ang content sa Orchestra Task & URL.
+3. SP Details is updated (including product limit entry)
+4. Sample user access is added to Account Details > Other Access
+
+For online form activation
+1. Form(s) are added (form should be on test mode and payment gateways disabled)
+2. Naplastar na ang content sa Orchestra Task & URL.
+
+These aforementioned things kay mao na sila ako ipang-check before nako i-approve ang ticket (in addition to dapat sakto pud ang content sa ticket).
+If naay QA changes (if naay ko'y ipa-usab ninyo), you have to implement them ASAP and you have to let me know once done na para ma-review nako ang updates. 
+If ok na kay that's the time i-approve na nako ang ticket.
+
+Notes
+- Submit your ticket request not later than 5:00 pm (the earlier, the better) so I still have time to review it.
+- I can approve tickets even though wala pa'y screenshots link and backup path entry sa Task & URL, pero dapat i-fulfill ni ninyo before mo mag-"For QA" sa task.
+- While waiting for my confirmation/response nga na-approve/ok na ang ticket, you may "Break" your task and switch to another task for the meantime. 
+- If approved na ang ticket, you may then add the ticket link sa Orc entry and if wala na'y i-apas pa (like nahoman na ug backup and such) kay pwede na ninyo 
+i-"For QA" ang task.
+-----------------------------------------------------------------------------
+SENT TO AGENT EMAILS
+Apply the following, starting from #1: 
+
+1.) If Agent created the task, then send email updates TO that Agent. Else, proceed to #2.
+
+2.) If Agent sent the instrux, then send email updates TO that Agent. If shared task, check task from other team. Else, if no Agent found, proceed to #3.
+
+3.) Send email updates TO Handling Agent. Else, if not found, proceed to #4.
+
+4.) Check Account Details, send email updates TO the account's assigned Tech X instead.
+
+IMPORTANT: For #1 and #2, if lahi ang Handling Agent sa name ni Agent nga nag-create sa task/forward sa instrux, kay i-CC si Handling Agent.
+-----------------------------------------------------------------------------
+all Another reminder:
+
+If live payment gateway has already been integrated and e-mail functionality is working (this is applicable for payment integration tasks, backend PDQA tasks, checking/testing tasks, fixing tasks), DO NOT FORGET to include this in your Orc entry...
+
+For WooCommerce (checkout)
+Order notifications will be sent to: {e-mail address}
+
+For online payment forms
+Online form notifications will be sent to: {e-mail address}
+
+====================
+
+Example entries:
+
+====================
+
+Checkout
+- integrated PayPal payment gateway
+{page link}
+
+Order notifications will be sent to: mailto:client@mail.com
+
+=================
+
+Donation
+- reviewed and checked backend features
+{page link}
+
+Online form notifications will be sent to: mailto:client@mail.com
+
+=================
+Note: Dili magbutang sa statement if wala pa'y live payment.
