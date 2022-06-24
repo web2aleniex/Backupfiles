@@ -1,0 +1,95 @@
+Google API
+
+» Also, we would like to ask for the Client's Google Map API key for the integration of the "Location Search Places" to the website. This is applicable to the Pick-up Location, Drop-off Location, and the calculation for Fees on the Dispatch feature. Provided below are the steps on how to get the API key. Once the Client has acquired the credentials, please provide them to us. Thank you. 
+
+To get an API key:
+
+1. Go to this link  https://developers.google.com/maps/documentation/javascript/get-api-key .
+2. Click the "Get Started" button.
+3. On "Pick a product" select the 3 options ("Maps", "Routes", "Place" ) since this is what we will be using.
+4. Then select/create a project.
+5. And to complete the process, set your billing for the selected project.
+6. Then go to the Google Cloud Platform Console ( https://console.cloud.google.com/google/maps-apis/overview ).
+7. Click the project drop-down and select or create the project for which you want to add an API key.
+8. Click the menu button and select APIs & Services > Credentials.
+9. On the Credentials page, click Create credentials > API key.
+10. The API key created dialog displays your newly created API key.
+11. Click Close.
+12. The new API key is listed on the Credentials page under API keys.
+
+
+» Furthermore, please follow the steps below to enable Autocomplete.
+ 
+Enable Autocomplete for Addresses:
+
+To view your list of enabled APIs:
+
+1. Go to the Google Cloud Platform Console ( https://console.cloud.google.com/project/_/apiui/apis/enabled ).
+2. Click the Select a project button, then select the same project you set up from the above steps and click Open.
+3. From the list of APIs on the Dashboard, look for Places API.
+4.If you see the API in the list, you’re all set. If the API is not listed, enable it: 
+    1. At the top of the page, select ENABLE API to display the Library tab. 
+    2. Search for Places API, then select it from the results list.  
+    3.Select ENABLE. When the process finishes, Places API appears in the list of APIs on the Dashboard.
+
+---------------------------
+
+Cash app:
+
+» Hi, please be informed that we can't integrate Zelle in website, because the payment is through mobile. While in Cash App we would like to ask the Cash App URL containing a $Cashtag of the client. We'll give a format about the link in Cash App URL below. Please advise. Thank you.
+
+( https://cash.app/$yourcashtag )
+
+--------------------------------
+
+FTP Access
+
+Please be informed that in order for us to make your requested updates and to deliver better output we need your FTP login access. These would greatly help us in keeping your website up and running.
+
+ 
+
+{website URL here}
+
+ 
+
+We look forward to your reply.
+
+_-------------------------------
+
+No Maintenance Fee
+
+» Also, we would like to inform you that this account has no maintenance fee reflected on AMS. In order for us to proceed with further modification in the future, please reflect the payment since we will prioritize paid accounts and freebie maintenance accounts that are reflected on AMS only. Please be advised. Thank you.
+
+
+--------------------
+Obtain Credentials
+
+» We have obtained the needed payment API credentials by logging in to the Client's PayPal account using the login credentials you provided. For security purpose, kindly advise the Client to update their account's password. Thank you.
+
+-----------------------
+
+Offer 3 Options for Services
+
+» Hi, before we proceed, we would like to give three options that we can implement with the "Add to Cart" feature. Please see below:
+
+Using WooCommerce for the services offered on the website. The customers can add multiple items to the cart, at the same time, they can apply coupons. As for the Client, he/she can easily manage offered services and coupons. This option is convenient for both users, however, this will entail an additional payment.
+ Using the PayPal code. Adding multiple items to the cart is not possible for this option since every button is unique. 
+Using our online payment form. The customers can add multiple items to the cart. No additional payment is needed, however, there will be no coupon feature since it already involves data manipulation.
+» We would like to ask the Client which option should we use for the said feature so that we can implement it as soon as possible. Please advise. Thank you.
+
+-------------------------
+Products on Limit
+
+» Hi, please be informed that we've already done adding the products. If the Client wants to add more products, please be informed that only 2 products left based on the checklist limit of product uploading. Also, we advise launching the site in order to avoid the files for products from being corrupted upon uploading. Please advise. Thank you
+
+
+-----------------------
+
+Shopify (Asking Store Address)
+
+» Before we can proceed on the Shopify Integration, we would like to ask for the Client's Shopify store address (sample format: my-store.shopify.com) and its login credentials. ETC for the integration is 8 working days after the Shopify account is provided. Please advise. Thank you.
+
+----------------------------------
+Suggested Plugin
+
+Disclaimer: We can't assure if the plugin would be functioning on the site unless we have tested it and we can only test it once the plugin is purchased. However, the plugin comes with a money-back guarantee in case it doesn't work as intended.
