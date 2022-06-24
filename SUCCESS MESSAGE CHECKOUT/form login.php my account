@@ -1,0 +1,44 @@
+sa form login.php my account
+
+<?php
+session_start();
+/**
+ * Login Form
+ *
+ * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/form-login.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see     https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 4.1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+echo $_SESSION['payment_succesful'];
+
+
+function.php
+add_action( 'woocommerce_before_thankyou', 'success_message_after_payment' );
+function success_message_after_payment( $order_id ){
+    // Get the WC_Order Object
+    $order = wc_get_order( $order_id );
+
+    if ( $order->has_status('processing') ){
+        wc_print_notice( __("
+		Merci for Placing an on Der at Le Loft Devparis.", "woocommerce"), "success" );
+		$_SESSION['payment_succesful'] =  '<div class="myaccount-message" role="alert">
+		Merci for Placing an on Der at Le Loft Devparis.</div>';
+
+    }
+	else {
+		
+		unset($_SESSION['payment_succesful']);
+	}
+}
